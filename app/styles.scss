@@ -625,23 +625,6 @@ search-result-supports {
             }
           }
         }
-        .stamp {
-          span{
-            padding-top: 10px;
-            display: block;
-            font-weight: 700;
-          }
-          line-height: 1.4em;
-          width: 114px;
-          height: 55px;
-          position: absolute;
-          top: 15px;
-          left: 30px;
-          background: url(assets/img/stamp-#{$kind}.svg);
-          transform: rotate(2deg);
-          text-align: center;
-          font-size: 1.2em;
-        }
       }
 
       @media (max-width: 768px) {
@@ -673,13 +656,39 @@ search-result-supports {
               height: 100px;
             }
           }
-          .stamp {
-            bottom: -20px;
-            top: auto;
-            left: -10px;
-            z-index: 10;
-          }
         }
+      }
+    }
+  }
+}
+
+// support for entity kind stamp, used in entities and procurement results
+
+@each $kind in entity, association, company, gov {
+  search-result-entities .body #{$kind}, search-result-exemption .#{$kind}-stamp {
+    span{
+      padding-top: 10px;
+      display: block;
+      font-weight: 700;
+    }
+    line-height: 1.4em;
+    width: 114px;
+    height: 55px;
+    position: absolute;
+    top: 15px;
+    left: 30px;
+    background: url(assets/img/stamp-#{$kind}.svg);
+    transform: rotate(2deg);
+    text-align: center;
+    font-size: 1.2em;
+  }
+  @media (max-width: 768px) {
+    .body {
+      search-result-entities .body #{$kind}, search-result-exemption .#{$kind}-stamp {
+        bottom: -20px;
+        top: auto;
+        left: -10px;
+        z-index: 10;
       }
     }
   }

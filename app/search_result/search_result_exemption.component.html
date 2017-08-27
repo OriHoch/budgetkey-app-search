@@ -6,13 +6,15 @@
       <span class="meta"><strong><span class="date">{{item.source.last_update_date | date:'dd.MM.yy'}}</span> — ע״י
       {{item.source.publisher}}</strong></span>
       <h3 class="title"><strong>{{item.source.regulation}}</strong>
-      <a *ngIf="valid_link" [attr.href]="entity_link" target="_blank">
-        {{item.source.supplier}} <span>{{item.source.supplier_id}}</span>
-      </a>
-      <a *ngIf="!valid_link">
-        {{item.source.supplier}} <span>{{item.source.supplier_id}}</span>
-      </a>
+      <a *ngIf="valid_link" [attr.href]="entity_link" target="_blank">{{item.source.supplier}}</a>
+      <a *ngIf="!valid_link">{{item.source.supplier}} <span>{{item.source.supplier_id}}</span></a>
       </h3>
+      <div *ngIf="item.source.entity_kind" class="{{item.source.entity_kind}}-stamp">
+        <div>
+          <span>{{kindTitle}}</span>
+          ע״ר {{item.source.supplier_id}}
+        </div>
+      </div>
     </div>
     <div class="col-md-4">
       <span class="period exemption-period">

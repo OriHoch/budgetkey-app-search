@@ -92,12 +92,14 @@ export class SearchResultExemptionComponent implements OnInit {
   details: string;
   entity_link: string;
   valid_link: boolean;
+  kindTitle: string;
 
   constructor() { }
   ngOnInit() {
     this.details = 'לורם איפסום ' || this.item.source.title;
     this.entity_link = 'http://www.obudget.org/#entity/' + this.item.source.entity_id + '/2017/main';
     this.valid_link = this.item.source.entity_id !== null;
+    this.kindTitle = getKindTitle(this.item.source.entity_kind);
   }
 }
 
@@ -124,6 +126,26 @@ function searchResultsTemplateParams(item: object) {
       map(_.partial(attrToParams, item)).
       filter(_.property('isTitleTextMatched'))[0]
   );
+}
+
+let kindTitles = {
+  'association': 'עמותה',
+  'university': 'אוניברסיטה',
+  'company': 'חברה',
+  'municipality': 'רשות מקומית',
+  'government_office': 'משרד ממשלתי',
+  'municipal_parties': 'רשות מוניציפלית',
+  'ottoman-association': 'אגודה עותמאנית',
+  'conurbation': 'עיירות',
+  'foreign_representative': 'ייצוג-חו\"ל'
+};
+
+function getKindTitle(kind: string) {
+  if (kindTitles.hasOwnProperty(kind)) {
+    return kindTitles[kind];
+  } else {
+    return '';
+  }
 }
 
 // procurement Component
@@ -178,6 +200,7 @@ export class SearchResultEntitiesComponent implements OnInit {
   @Input() item: DocResultEntry;
   details: string;
   link: string;
+  kindTitle: string;
 
   // Vars for Highlight component
   titleText: string;
@@ -186,9 +209,9 @@ export class SearchResultEntitiesComponent implements OnInit {
 
   constructor() { }
   ngOnInit() {
-
     this.details = 'לורם איפסום ' || this.item.source.title;
     this.link = 'http://www.obudget.org/#entity/' + this.item.source.id + '/2017/main';
+    this.kindTitle = getKindTitle(this.item.source.kind);
 
     this.isTitleTextMatched = this.verifyTitleMatch();
     this.titleText = this.item.source.name;

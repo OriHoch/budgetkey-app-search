@@ -53,7 +53,7 @@
     </div>
     <div class="stamp">
       <div>
-        <span>עמותה</span>
+        <span>{{kindTitle}}</span>
         ע״ר {{item.source.id}}
       </div>
     </div>
@@ -70,7 +70,7 @@
     </div>
     <div class="stamp">
       <div>
-        <span>אוניברסיטה</span>
+        <span>{{kindTitle}}</span>
         ע״ר {{item.source.id}}
       </div>
     </div>
@@ -99,7 +99,7 @@
     </div>
     <div class="stamp">
       <div>
-        <span>חברה</span>
+        <span>{{kindTitle}}</span>
         מ.ח. {{item.source.id}}
       </div>
     </div>
@@ -116,7 +116,7 @@
     </div>
     <div class="stamp">
       <div>
-        <span>רשות מקומית</span>
+        <span>{{kindTitle}}</span>
         מ.ח. {{item.source.id}}
       </div>
     </div>
@@ -140,7 +140,7 @@
     </div>
     <div class="stamp">
       <div>
-        <span>משרד ממשלתי</span>
+        <span>{{kindTitle}}</span>
         #{{item.source.id}}
       </div>
     </div>
@@ -157,11 +157,7 @@
     </div>
     <div class="stamp">
       <div>
-        <span>{{item.source.kind ?
-          (item.source.kind=="municipal_parties" ? "רשות מוניציפלית" :
-          (item.source.kind=="ottoman-association" ? "אגודה עותמאנית":
-          (item.source.kind=="conurbation" ? "עיירות":
-          (item.source.kind=="foreign_representative" ? 'ייצוג-חו\"ל': '[--]')))): '[--]'}}</span>
+        <span>{{kindTitle == '' ? '[--]' : kindTitle}}</span>
         #{{item.source.id}}
       </div>
     </div>
