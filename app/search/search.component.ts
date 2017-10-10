@@ -176,7 +176,7 @@ export class SearchComponent implements OnInit {
    */
   processResults(results: SearchResults): void {
     console.log('results: ', results);
-    if (results) {
+    if (results && results.search_counts && results.search_results) {
       if (this.resultRenew) {
         this.resultTotal = 0;
         this.resultTotalCount = new SearchResultsCounter();

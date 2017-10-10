@@ -3,6 +3,7 @@
  */
 import { Component, Input, OnInit } from '@angular/core';
 import { DocResultEntry } from '../_model/SearchResults';
+import { GENERIC_ITEM_PAGE_URL, THEME } from '../_config/config';
 let _ = require('lodash');
 // import { Highlighter } from '../highlighter/search.highlighter';
 
@@ -88,11 +89,13 @@ export class SearchResultExemptionComponent implements OnInit {
 })
 export class SearchResultProcurementComponent implements OnInit {
   @Input() item: DocResultEntry;
-  details: string;
+  link: string;
+  theme: string = THEME;
 
   constructor() { }
 
   ngOnInit() {
+    this.link = GENERIC_ITEM_PAGE_URL + this.item.source.doc_id;
   }
 
 }
