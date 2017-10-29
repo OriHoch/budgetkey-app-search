@@ -22,6 +22,8 @@ COPY *.js /app/
 COPY *.html /app/
 COPY app /app/app
 
+
+ARG BUDGETKEY_GENERIC_ITEM_BASE_URL
 RUN cd /app/ && npm run dist
 
 EXPOSE 8000
